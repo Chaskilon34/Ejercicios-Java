@@ -1,52 +1,41 @@
 package org.example;
 
-import org.example.Division;
-import org.example.Multiplicacion;
-
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
-        System.out.println("Indique le primer numero :");
-        int num1 = sc.nextInt();
+        Cliente cliente = new Cliente();
+        Producto producto1 = new Producto();
+        Venta venta = new Venta();
 
-        System.out.println("Indique el segundo numero:");
-        int num2 = sc.nextInt();
+        System.out.print("Indique su nombre: ");
+        String user = scan.next();
 
-        System.out.println("Iindique el tercer numero :");
-        int num3 = sc.nextInt();
-        int suma = num1 + num2 + num3;
+        System.out.print("Nombre del producto: ");
+        String producto = scan.next();
 
-        Division divison = new Division( ) ;
-        int resultadoD = divison.divisioon(num1, num2, num3);
-        System.out.println("Division: " + resultadoD);
+        System.out.print("Precio del producto: ");
+        int precio = scan.nextInt();
 
-        Multiplicacion multiplicacion = new Multiplicacion();
-        int resultadoM = multiplicacion.multiplicacioon(num1, num2, num3);
-        System.out.println("MUltiplicaclion " + resultadoM);
+        System.out.print("Indique la cantidad de objetos a pagar: ");
+        int cantidad = scan.nextInt();
 
+        cliente.user = user;
+        producto1.nombre = producto;
+        producto1.precio = precio;
 
+        int total = venta.calcularT(producto1.precio, cantidad);
 
-        double promedio = suma / 3.0;
+        System.out.println("Cliente: " + cliente.user);
+        System.out.println("Producto: " + producto1.nombre);
+        System.out.println("Precio: $" + producto1.precio);
+        System.out.println("Cantidad: " + cantidad);
+        System.out.println("Total a pagar: " + total);
 
-        int mayor;
-
-        if (num1 > num2 && num1 > num3) {
-            mayor = num1;
-        } else if (num2 > num1 && num2 > num3) {
-            mayor = num2;
-        } else {
-            mayor = num3;
-        }
-
-        System.out.println("Suma: " + suma);
-        System.out.println("Promedio: " + promedio);
-        System.out.println("Número mayor: " + mayor);
-
-        sc.close();
+        scan.close();
     }
 }
